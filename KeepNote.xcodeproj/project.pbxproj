@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2C0C4D031DF2F7F100E4B4C4 /* FileManager+Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0C4D021DF2F7F100E4B4C4 /* FileManager+Document.swift */; };
+		2C0C4D051DF2F83800E4B4C4 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0C4D041DF2F83800E4B4C4 /* DataManager.swift */; };
+		2C0C4D091DF2F8C700E4B4C4 /* NoteManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0C4D081DF2F8C700E4B4C4 /* NoteManager.swift */; };
 		2C40054F1DDCB077005D076C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C40054E1DDCB077005D076C /* AppDelegate.swift */; };
 		2C4005541DDCB078005D076C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C4005521DDCB078005D076C /* Main.storyboard */; };
 		2C4005571DDCB078005D076C /* KeepNote.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2C4005551DDCB078005D076C /* KeepNote.xcdatamodeld */; };
@@ -17,6 +20,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2C0C4D021DF2F7F100E4B4C4 /* FileManager+Document.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FileManager+Document.swift"; sourceTree = "<group>"; };
+		2C0C4D041DF2F83800E4B4C4 /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		2C0C4D081DF2F8C700E4B4C4 /* NoteManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteManager.swift; sourceTree = "<group>"; };
 		2C40054B1DDCB077005D076C /* KeepNote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KeepNote.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C40054E1DDCB077005D076C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2C4005531DDCB078005D076C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -39,6 +45,38 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2C0C4D001DF2F74C00E4B4C4 /* models */ = {
+			isa = PBXGroup;
+			children = (
+				2C0C4D041DF2F83800E4B4C4 /* DataManager.swift */,
+			);
+			name = models;
+			sourceTree = "<group>";
+		};
+		2C0C4D011DF2F7BE00E4B4C4 /* utils */ = {
+			isa = PBXGroup;
+			children = (
+				2C0C4D021DF2F7F100E4B4C4 /* FileManager+Document.swift */,
+			);
+			name = utils;
+			sourceTree = "<group>";
+		};
+		2C0C4D061DF2F8AF00E4B4C4 /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				2C0C4D071DF2F8B600E4B4C4 /* manager */,
+			);
+			name = controller;
+			sourceTree = "<group>";
+		};
+		2C0C4D071DF2F8B600E4B4C4 /* manager */ = {
+			isa = PBXGroup;
+			children = (
+				2C0C4D081DF2F8C700E4B4C4 /* NoteManager.swift */,
+			);
+			name = manager;
+			sourceTree = "<group>";
+		};
 		2C4005421DDCB077005D076C = {
 			isa = PBXGroup;
 			children = (
@@ -58,6 +96,9 @@
 		2C40054D1DDCB077005D076C /* KeepNote */ = {
 			isa = PBXGroup;
 			children = (
+				2C0C4D061DF2F8AF00E4B4C4 /* controller */,
+				2C0C4D011DF2F7BE00E4B4C4 /* utils */,
+				2C0C4D001DF2F74C00E4B4C4 /* models */,
 				2C40054E1DDCB077005D076C /* AppDelegate.swift */,
 				2C4005521DDCB078005D076C /* Main.storyboard */,
 				2C4005581DDCB078005D076C /* Assets.xcassets */,
@@ -144,9 +185,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				743E5A501DEDD0AF00E08379 /* NoteCollectionViewCell.swift in Sources */,
+				2C0C4D051DF2F83800E4B4C4 /* DataManager.swift in Sources */,
+				2C0C4D091DF2F8C700E4B4C4 /* NoteManager.swift in Sources */,
 				2C4005571DDCB078005D076C /* KeepNote.xcdatamodeld in Sources */,
 				2C40054F1DDCB077005D076C /* AppDelegate.swift in Sources */,
 				2C4005641DDCB68E005D076C /* HomepageViewController.swift in Sources */,
+				2C0C4D031DF2F7F100E4B4C4 /* FileManager+Document.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

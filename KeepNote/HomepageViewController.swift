@@ -16,7 +16,14 @@ class HomepageViewController: UIViewController, UICollectionViewDelegate, UIColl
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        /*
+         
+        let colour = UIColor.red
+        let rgbColour = colour.cgColor
+        
+        let color = UIColor(cgColor: rgbColour)
+        */
+        
         // Do any additional setup after loading the view.
     }
 
