@@ -37,15 +37,18 @@ public class NoteManager {
         }
         return nil
     }
-    func readNotes() -> Bool {
+    /*
+     *  Return true in handler if noteList have been populate
+     */
+    func readNotes(handler: (_ result:Bool) -> Void){
         if let context = DataManager.sharedInstance.objectContext {
             let request: NSFetchRequest<Note> = Note.fetchRequest()
             if let notes = try? context.fetch(request) {
                 self.noteList = notes
-                return true
+                handler(true)
             }
         }
-        return false
+        handler(false)
     }
     private func readNoteById(context: NSManagedObjectContext,id:NSManagedObjectID) -> Note {
         return context.object(with: id) as! Note
@@ -53,7 +56,7 @@ public class NoteManager {
     /*
      * Update the current object
      */
-    func updateNote() -> Void {
+    func updateNote(handler: (_ error:String?) -> Void) -> Void {
         if let context = DataManager.sharedInstance.objectContext {
             let note = readNoteById(context: context, id: (currentNote?.objectID)!)
             note.title = currentNote?.title
@@ -63,10 +66,12 @@ public class NoteManager {
             note.color = currentNote?.color
             do{
                 try context.save()
+                handler(nil)
             } catch let error as NSError {
-                print(error)
+                handler(error.localizedDescription)
             }
         }
+        handler("CONTEXT NOT FOUND")
     }
     func remove(note:Note) -> Void {
         if let context = DataManager.sharedInstance.objectContext {
