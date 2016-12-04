@@ -14,11 +14,7 @@ public class NoteManager {
     
     public static let sharedInstance = NoteManager()
     
-    public var currentNote:Note? {
-        didSet {
-            updateNote()
-        }
-    }
+    public var currentNote:Note?
     
     public var noteList:[Note]?
     
@@ -55,10 +51,9 @@ public class NoteManager {
         return context.object(with: id) as! Note
     }
     /*
-     * Update the current object in Note Manager
-     * just need to set the current object to update
+     * Update the current object
      */
-    private func updateNote() -> Void {
+    func updateNote() -> Void {
         if let context = DataManager.sharedInstance.objectContext {
             let note = readNoteById(context: context, id: (currentNote?.objectID)!)
             note.title = currentNote?.title
