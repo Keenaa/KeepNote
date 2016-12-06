@@ -59,11 +59,10 @@ class HomepageViewController: UIViewController, UICollectionViewDelegate, UIColl
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath as IndexPath) as! NoteCollectionViewCell
         // Use the outlet in our custom class to get a reference to the UILabel in the cell
         if sharedInstance.noteList.count > 0 {
-           // cell.noteTitle.text = NoteManager.sharedInstance.noteList?[indexPath.row].title
-            // Content
-            // Created_at ?
-            // etc...
-            cell.backgroundColor = UIColor.yellow // make cell more visible in our example project
+            cell.titleLabel.text = NoteManager.sharedInstance.noteList[indexPath.row].title
+            cell.contentLabel.text = NoteManager.sharedInstance.noteList[indexPath.row].content
+            cell.backgroundColor = NoteManager.sharedInstance.noteList[indexPath.row].color as! UIColor?
+            // make cell more visible in our example project
         }
         return cell
     }
@@ -71,6 +70,7 @@ class HomepageViewController: UIViewController, UICollectionViewDelegate, UIColl
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         // handle tap events
+        NoteManager.sharedInstance.currentNote = NoteManager.sharedInstance.noteList[indexPath.row]
         performSegue(withIdentifier: "NewNote", sender: self)
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
