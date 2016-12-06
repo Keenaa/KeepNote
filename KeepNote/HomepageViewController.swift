@@ -20,17 +20,8 @@ class HomepageViewController: UIViewController, UICollectionViewDelegate, UIColl
     }
     
     override func viewDidLoad() {
-
         super.viewDidLoad()
-        sharedInstance.readNotes { (result:Bool) in
-            if result {
-                self.homeView?.reloadData()
-                //collection view reload data
-            }else{
-                print("Error")
-            }
-        }
-        
+
         /*
          
         let colour = UIColor.red
@@ -41,6 +32,17 @@ class HomepageViewController: UIViewController, UICollectionViewDelegate, UIColl
         
         // Do any additional setup after loading the view.
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        NoteManager.sharedInstance.readNotes { (result:Bool) in
+            if result {
+                self.homeView?.reloadData()
+                //collection view reload data
+            }else{
+                print("Error")
+            }
+        }
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -48,13 +50,13 @@ class HomepageViewController: UIViewController, UICollectionViewDelegate, UIColl
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return NoteManager.sharedInstance.noteList!.count
+        return (NoteManager.sharedInstance.noteList.count)
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath as IndexPath) as! NoteCollectionViewCell
         // Use the outlet in our custom class to get a reference to the UILabel in the cell
-        if sharedInstance.noteList!.count > 0 {
+        if sharedInstance.noteList.count > 0 {
            // cell.noteTitle.text = NoteManager.sharedInstance.noteList?[indexPath.row].title
             // Content
             // Created_at ?

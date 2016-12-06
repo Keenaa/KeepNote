@@ -16,7 +16,7 @@ public class NoteManager {
     
     public var currentNote:Note?
     
-    public var noteList:[Note]?
+    public var noteList:[Note] = []
     
     func createNote(title:String,content:String,position:Int,color:UIColor) -> Note? {
         if let context =  DataManager.sharedInstance.objectContext {

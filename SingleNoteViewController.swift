@@ -11,9 +11,9 @@ import UIKit
 class SingleNoteViewController: UIViewController {
     @IBOutlet weak var noteTitle: UINavigationItem!
     
-    @IBOutlet weak var noteText: UITextView!
-    
     @IBOutlet weak var editTitle: UITextField!
+    
+    @IBOutlet weak var noteText: UITextView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,10 +23,10 @@ class SingleNoteViewController: UIViewController {
             noteText.text = NoteManager.sharedInstance.currentNote?.content
         }else{
             noteTitle.title = "Add New"
-            editTitle.placeholder = "Title"
             noteText.text = ""
         }
     }
+
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -44,7 +44,7 @@ class SingleNoteViewController: UIViewController {
             }
         }
         }else{
-            NoteManager.sharedInstance.createNote(title: editTitle.text!, content: noteText.text, position: 0, color: UIColor.yellow)
+             NoteManager.sharedInstance.createNote(title: editTitle.text!, content: noteText.text, position: 0, color: UIColor.yellow)
             self.dismiss(animated: true, completion: {
                 
             })
@@ -68,14 +68,5 @@ class SingleNoteViewController: UIViewController {
         
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
