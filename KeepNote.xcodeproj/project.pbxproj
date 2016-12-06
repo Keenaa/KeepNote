@@ -16,6 +16,7 @@
 		2C4005591DDCB078005D076C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2C4005581DDCB078005D076C /* Assets.xcassets */; };
 		2C40055C1DDCB078005D076C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C40055A1DDCB078005D076C /* LaunchScreen.storyboard */; };
 		2C4005641DDCB68E005D076C /* HomepageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4005631DDCB68E005D076C /* HomepageViewController.swift */; };
+		743C74A71DF6F69B003DB03F /* SingleNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743C74A61DF6F69B003DB03F /* SingleNoteViewController.swift */; };
 		743E5A501DEDD0AF00E08379 /* NoteCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743E5A4F1DEDD0AF00E08379 /* NoteCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -31,6 +32,7 @@
 		2C40055B1DDCB078005D076C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2C40055D1DDCB078005D076C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2C4005631DDCB68E005D076C /* HomepageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomepageViewController.swift; sourceTree = "<group>"; };
+		743C74A61DF6F69B003DB03F /* SingleNoteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SingleNoteViewController.swift; path = ../SingleNoteViewController.swift; sourceTree = "<group>"; };
 		743E5A4F1DEDD0AF00E08379 /* NoteCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -106,6 +108,7 @@
 				2C40055D1DDCB078005D076C /* Info.plist */,
 				2C4005551DDCB078005D076C /* KeepNote.xcdatamodeld */,
 				2C4005631DDCB68E005D076C /* HomepageViewController.swift */,
+				743C74A61DF6F69B003DB03F /* SingleNoteViewController.swift */,
 				743E5A4F1DEDD0AF00E08379 /* NoteCollectionViewCell.swift */,
 			);
 			path = KeepNote;
@@ -190,6 +193,7 @@
 				2C4005571DDCB078005D076C /* KeepNote.xcdatamodeld in Sources */,
 				2C40054F1DDCB077005D076C /* AppDelegate.swift in Sources */,
 				2C4005641DDCB68E005D076C /* HomepageViewController.swift in Sources */,
+				743C74A71DF6F69B003DB03F /* SingleNoteViewController.swift in Sources */,
 				2C0C4D031DF2F7F100E4B4C4 /* FileManager+Document.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

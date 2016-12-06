@@ -9,5 +9,7 @@
 import UIKit
 
 class NoteCollectionViewCell: UICollectionViewCell {
-    @IBOutlet weak var cellLabel: UILabel!
+    
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var contentLabel: UILabel!
 }

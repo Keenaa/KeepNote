@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -35,8 +36,15 @@
                                             <rect key="frame" x="0.0" y="0.0" width="178" height="191"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="nUr-p6-CTa">
-                                                    <rect key="frame" x="7" y="8" width="42" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="nUr-p6-CTa">
+                                                    <rect key="frame" x="7" y="8" width="171" height="36"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="TJ9-fd-YAo">
+                                                    <rect key="frame" x="0.0" y="52" width="178" height="139"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -45,7 +53,8 @@
                                             </subviews>
                                         </view>
                                         <connections>
-                                            <outlet property="cellLabel" destination="nUr-p6-CTa" id="ai4-9n-XBX"/>
+                                            <outlet property="contentLabel" destination="TJ9-fd-YAo" id="cOv-hd-dMW"/>
+                                            <outlet property="titleLabel" destination="nUr-p6-CTa" id="bDY-hY-aO1"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -62,10 +71,16 @@
                                 <state key="normal" title="Add New">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="addNewNote:" destination="bLJ-rb-pU6" eventType="touchUpInside" id="gNk-U7-QCy"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <segue destination="CEq-lm-noL" kind="modal" identifier="NewNote" id="JCs-xK-LdA"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3r8-Bw-3Ob" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -74,13 +89,39 @@
         <!--SingleNoteController-->
         <scene sceneID="yhL-VB-fTS">
             <objects>
-                <viewController title="SingleNoteController" id="CEq-lm-noL" sceneMemberID="viewController">
+                <viewController title="SingleNoteController" id="CEq-lm-noL" customClass="SingleNoteViewController" customModule="KeepNote" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="sCj-oR-X4n">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <navigationBar contentMode="scaleToFill" id="CEz-Bx-QF1">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem title="Title" id="SXJ-a6-fWI">
+                                        <barButtonItem key="leftBarButtonItem" title="X" id="LIm-lF-Rzl">
+                                            <connections>
+                                                <action selector="back:" destination="CEq-lm-noL" id="EdI-v7-8ki"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <rightBarButtonItems>
+                                            <barButtonItem title="Delete" id="Kmt-J1-mtW">
+                                                <color key="tintColor" red="1" green="0.0093617555427757404" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <connections>
+                                                    <action selector="deleteNote:" destination="CEq-lm-noL" id="HgV-yz-krQ"/>
+                                                </connections>
+                                            </barButtonItem>
+                                            <barButtonItem title="Options" id="QEI-Jl-HZZ">
+                                                <connections>
+                                                    <action selector="options:" destination="CEq-lm-noL" id="7ce-dl-ugi"/>
+                                                </connections>
+                                            </barButtonItem>
+                                        </rightBarButtonItems>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" textAlignment="natural" id="cce-FQ-H4Z">
-                                <rect key="frame" x="0.0" y="60" width="375" height="538"/>
+                                <rect key="frame" x="0.0" y="82" width="375" height="516"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
@@ -95,11 +136,23 @@
                                 <state key="normal" title="Save">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="saveData:" destination="CEq-lm-noL" eventType="touchUpInside" id="yCq-Y4-2Gy"/>
+                                </connections>
                             </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" id="8JT-AI-gCK">
+                                <rect key="frame" x="0.0" y="44" width="375" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Edit" id="Frk-sR-jZG"/>
+                    <connections>
+                        <outlet property="noteTitle" destination="SXJ-a6-fWI" id="bvM-Pw-l8A"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OEY-J0-Nl9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
