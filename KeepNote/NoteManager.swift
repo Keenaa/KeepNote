@@ -22,7 +22,6 @@ public class NoteManager {
         if let context =  DataManager.sharedInstance.objectContext {
             let note = Note(context: context)
             note.title = title
-            
             note.content = content
             note.position = Int32(position)
             note.color = color

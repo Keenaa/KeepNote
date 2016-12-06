@@ -18,6 +18,7 @@
 		2C4005641DDCB68E005D076C /* HomepageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4005631DDCB68E005D076C /* HomepageViewController.swift */; };
 		743C74A71DF6F69B003DB03F /* SingleNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743C74A61DF6F69B003DB03F /* SingleNoteViewController.swift */; };
 		743E5A501DEDD0AF00E08379 /* NoteCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743E5A4F1DEDD0AF00E08379 /* NoteCollectionViewCell.swift */; };
+		BE7359F59810527D30F8F4B0 /* Pods_KeepNote.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD438BBEA8B710B9485CEF4E /* Pods_KeepNote.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,8 +33,11 @@
 		2C40055B1DDCB078005D076C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2C40055D1DDCB078005D076C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2C4005631DDCB68E005D076C /* HomepageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomepageViewController.swift; sourceTree = "<group>"; };
+		5A9A640AE1A844F7A940FF64 /* Pods-KeepNote.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KeepNote.release.xcconfig"; path = "Pods/Target Support Files/Pods-KeepNote/Pods-KeepNote.release.xcconfig"; sourceTree = "<group>"; };
 		743C74A61DF6F69B003DB03F /* SingleNoteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SingleNoteViewController.swift; path = ../SingleNoteViewController.swift; sourceTree = "<group>"; };
 		743E5A4F1DEDD0AF00E08379 /* NoteCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteCollectionViewCell.swift; sourceTree = "<group>"; };
+		BD438BBEA8B710B9485CEF4E /* Pods_KeepNote.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KeepNote.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E422066A90DFE2644C0A58E1 /* Pods-KeepNote.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KeepNote.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KeepNote/Pods-KeepNote.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,12 +45,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BE7359F59810527D30F8F4B0 /* Pods_KeepNote.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		16FFFD5BE83D9A97DDF9BACB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BD438BBEA8B710B9485CEF4E /* Pods_KeepNote.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		2C0C4D001DF2F74C00E4B4C4 /* models */ = {
 			isa = PBXGroup;
 			children = (
@@ -84,6 +97,8 @@
 			children = (
 				2C40054D1DDCB077005D076C /* KeepNote */,
 				2C40054C1DDCB077005D076C /* Products */,
+				D93D00458A9B9948E09721F8 /* Pods */,
+				16FFFD5BE83D9A97DDF9BACB /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -114,6 +129,15 @@
 			path = KeepNote;
 			sourceTree = "<group>";
 		};
+		D93D00458A9B9948E09721F8 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E422066A90DFE2644C0A58E1 /* Pods-KeepNote.debug.xcconfig */,
+				5A9A640AE1A844F7A940FF64 /* Pods-KeepNote.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -121,9 +145,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2C4005601DDCB078005D076C /* Build configuration list for PBXNativeTarget "KeepNote" */;
 			buildPhases = (
+				4236FDF827957E2DFE762D53 /* [CP] Check Pods Manifest.lock */,
 				2C4005471DDCB077005D076C /* Sources */,
 				2C4005481DDCB077005D076C /* Frameworks */,
 				2C4005491DDCB077005D076C /* Resources */,
+				BBFE67D9F81BE3DDA3E75F1A /* [CP] Embed Pods Frameworks */,
+				77E157902F172496CDA5B425 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -147,6 +174,7 @@
 					2C40054A1DDCB077005D076C = {
 						CreatedOnToolsVersion = 8.1;
 						DevelopmentTeam = D4GMNKX6R5;
+						LastSwiftMigration = 0810;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -181,6 +209,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		4236FDF827957E2DFE762D53 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		77E157902F172496CDA5B425 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-KeepNote/Pods-KeepNote-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BBFE67D9F81BE3DDA3E75F1A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-KeepNote/Pods-KeepNote-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		2C4005471DDCB077005D076C /* Sources */ = {
@@ -313,21 +389,26 @@
 		};
 		2C4005611DDCB078005D076C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E422066A90DFE2644C0A58E1 /* Pods-KeepNote.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = D4GMNKX6R5;
 				INFOPLIST_FILE = KeepNote/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.keena.shemana.KeepNote;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
 		2C4005621DDCB078005D076C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5A9A640AE1A844F7A940FF64 /* Pods-KeepNote.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = D4GMNKX6R5;
 				INFOPLIST_FILE = KeepNote/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

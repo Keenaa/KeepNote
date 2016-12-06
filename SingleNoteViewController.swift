@@ -65,6 +65,7 @@ class SingleNoteViewController: UIViewController {
     }
     
     @IBAction func options(_ sender: Any) {
+        
     }
 
     /*

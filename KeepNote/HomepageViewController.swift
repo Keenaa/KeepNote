@@ -30,7 +30,7 @@ class HomepageViewController: UIViewController, UICollectionViewDelegate, UIColl
                 print("Error")
             }
         }
-
+        
         /*
          
         let colour = UIColor.red
