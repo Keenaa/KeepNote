@@ -79,6 +79,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
+                        <outlet property="collectionView" destination="rP5-jE-pVc" id="yMw-vO-Fae"/>
                         <segue destination="CEq-lm-noL" kind="modal" identifier="NewNote" id="JCs-xK-LdA"/>
                     </connections>
                 </viewController>
@@ -145,6 +146,9 @@
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="CEq-lm-noL" id="01Y-L7-beT"/>
+                                </connections>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

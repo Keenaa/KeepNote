@@ -19,7 +19,7 @@ class DataManager: NSObject {
         if let modelURL = Bundle.main.url(forResource: "KeepNote", withExtension: "momd"){
             if let model = NSManagedObjectModel(contentsOf: modelURL){
                 let persistentStoreCoordinator = NSPersistentStoreCoordinator(managedObjectModel: model)
-                _ = try? persistentStoreCoordinator.addPersistentStore(ofType: NSSQLiteStoreType, configurationName: nil, at: FileManager.documentURL(childpath: "keepnote.db"), options: nil)
+                _ = try? persistentStoreCoordinator.addPersistentStore(ofType: NSSQLiteStoreType, configurationName: nil, at: FileManager.documentURL(childpath: "keepNote.db"), options: nil)
                 let context = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
                 context.persistentStoreCoordinator = persistentStoreCoordinator
                 self.objectContext = context

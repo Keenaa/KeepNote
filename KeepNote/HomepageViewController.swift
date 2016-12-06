@@ -12,8 +12,9 @@ class HomepageViewController: UIViewController, UICollectionViewDelegate, UIColl
 
     let reuseIdentifier = "NoteCell" // also enter this string as the cell identifier in the storyboard
     let sharedInstance = NoteManager.sharedInstance
-    var homeView: UICollectionView?
 
+    @IBOutlet var collectionView: UICollectionView!
+    
     
     @IBAction func addNewNote(_ sender: Any) {
         performSegue(withIdentifier: "NewNote", sender: self)
@@ -36,8 +37,9 @@ class HomepageViewController: UIViewController, UICollectionViewDelegate, UIColl
     override func viewDidAppear(_ animated: Bool) {
         NoteManager.sharedInstance.readNotes { (result:Bool) in
             if result {
-                self.homeView?.reloadData()
-                //collection view reload data
+                DispatchQueue.main.async {
+                    self.collectionView.reloadData()
+                }
             }else{
                 print("Error")
             }
@@ -50,7 +52,7 @@ class HomepageViewController: UIViewController, UICollectionViewDelegate, UIColl
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return (NoteManager.sharedInstance.noteList.count)
+        return NoteManager.sharedInstance.noteList.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

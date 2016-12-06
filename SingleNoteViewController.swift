@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SingleNoteViewController: UIViewController {
+class SingleNoteViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var noteTitle: UINavigationItem!
     
     @IBOutlet weak var editTitle: UITextField!
@@ -49,6 +49,12 @@ class SingleNoteViewController: UIViewController {
                 
             })
         }
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
+        editTitle.resignFirstResponder()
+        return true
     }
     
     @IBAction func back(_ sender: Any) {

@@ -28,11 +28,11 @@ public class NoteManager {
             note.created_at = Date() as NSDate?
             do {
                 try context.save()
-                return note
             } catch {
                 print("failure : \(error)")
                 return nil
             }
+            return note
         }
         return nil
     }
@@ -45,9 +45,12 @@ public class NoteManager {
             if let notes = try? context.fetch(request) {
                 self.noteList = notes
                 handler(true)
+            } else {
+                handler(false)
             }
+        } else {
+            handler(false)
         }
-        handler(false)
     }
     private func readNoteById(context: NSManagedObjectContext,id:NSManagedObjectID) -> Note {
         return context.object(with: id) as! Note
