@@ -12,6 +12,7 @@ class HomepageViewController: UIViewController, UICollectionViewDelegate, UIColl
 
     let reuseIdentifier = "NoteCell" // also enter this string as the cell identifier in the storyboard
     let sharedInstance = NoteManager.sharedInstance
+    fileprivate var longPressGesture: UILongPressGestureRecognizer!
 
     @IBOutlet var collectionView: UICollectionView!
     
@@ -22,9 +23,9 @@ class HomepageViewController: UIViewController, UICollectionViewDelegate, UIColl
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-    
-        // Do any additional setup after loading the view.
+
+        longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(HomepageViewController.handleLongGesture(_:)))
+        self.collectionView.addGestureRecognizer(longPressGesture)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -42,6 +43,24 @@ class HomepageViewController: UIViewController, UICollectionViewDelegate, UIColl
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func handleLongGesture(_ gesture: UILongPressGestureRecognizer) {
+        
+        switch(gesture.state) {
+            
+        case UIGestureRecognizerState.began:
+            guard let selectedIndexPath = self.collectionView.indexPathForItem(at: gesture.location(in: self.collectionView)) else {
+                break
+            }
+            collectionView.beginInteractiveMovementForItem(at: selectedIndexPath)
+        case UIGestureRecognizerState.changed:
+            collectionView.updateInteractiveMovementTargetPosition(gesture.location(in: gesture.view!))
+        case UIGestureRecognizerState.ended:
+            collectionView.endInteractiveMovement()
+        default:
+            collectionView.cancelInteractiveMovement()
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -72,13 +91,19 @@ class HomepageViewController: UIViewController, UICollectionViewDelegate, UIColl
             return CGSize(width: collectionView.bounds.size.width, height: 300)
     }
     
-    // Moving ITEM
     func collectionView(_ collectionView: UICollectionView, moveItemAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-        let tmp = NoteManager.sharedInstance.noteList[destinationIndexPath.row]
         
-            // Move data
+        let temp = NoteManager.sharedInstance.noteList.remove(at: sourceIndexPath.item)
+        NoteManager.sharedInstance.noteList.insert(temp, at: destinationIndexPath.item)
+        NoteManager.sharedInstance.updateNotePosition { (error:String?) in
+            if error == nil {
+                //success
+            } else {
+                print(error)
+            }
+        }
     }
     
-
-
+    
+    
 }

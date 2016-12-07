@@ -33,6 +33,7 @@ class SingleNoteViewController: UIViewController, UITextFieldDelegate, UIPickerV
             editTitle.text = NoteManager.sharedInstance.currentNote?.title
             noteText.text = NoteManager.sharedInstance.currentNote?.content
         }else{
+            
             noteTitle.title = "Add New"
             noteText.text = ""
         }
@@ -58,7 +59,7 @@ class SingleNoteViewController: UIViewController, UITextFieldDelegate, UIPickerV
             }
         }
         }else{
-             _ = NoteManager.sharedInstance.createNote(title: editTitle.text!, content: noteText.text, position: 0, color: currentColorChoice!)
+             _ = NoteManager.sharedInstance.createNote(title: editTitle.text!, content: noteText.text, position: NoteManager.sharedInstance.noteList.count, color: currentColorChoice!)
             self.dismiss(animated: true, completion: {
                 
             })
@@ -85,12 +86,12 @@ class SingleNoteViewController: UIViewController, UITextFieldDelegate, UIPickerV
     }
     
     @IBAction func options(_ sender: Any) {
-        let shareDialog = MessageDialog(content: myContent)
-        shareDialog.completion = { result in
+        //let shareDialog = MessageDialog(content: myContent)
+        //shareDialog.completion = { result in
             // Handle share results
-        }
+        //}
         
-        try shareDialog.show()
+        //try shareDialog.show()
     }
     
     // The number of columns of data

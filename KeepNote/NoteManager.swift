@@ -41,7 +41,9 @@ public class NoteManager {
      */
     func readNotes(handler: (_ result:Bool) -> Void){
         if let context = DataManager.sharedInstance.objectContext {
+            
             let request: NSFetchRequest<Note> = Note.fetchRequest()
+            request.sortDescriptors = [NSSortDescriptor(key: "position", ascending: true)]
             if let notes = try? context.fetch(request) {
                 self.noteList = notes
                 handler(true)
@@ -75,10 +77,32 @@ public class NoteManager {
         }
         handler("CONTEXT NOT FOUND")
     }
+    
+    func updateNotePosition(handler: (_ error:String?) -> Void) -> Void {
+        for i in 0..<self.noteList.count {
+            if let context = DataManager.sharedInstance.objectContext {
+                let note = readNoteById(context: context, id: (self.noteList[i].objectID))
+                note.position = Int32(i)
+                do {
+                    try context.save()
+                } catch let error as NSError {
+                    handler(error.localizedDescription)
+                }
+            }
+        }
+        handler(nil)
+    }
+    
     func remove(note:Note) -> Void {
         if let context = DataManager.sharedInstance.objectContext {
             let note = readNoteById(context: context, id: note.objectID)
             context.delete(note)
+            do {
+                try context.save()
+            } catch let error as NSError {
+                print(error.localizedDescription)
+            }
+            
         }
     }
 }
