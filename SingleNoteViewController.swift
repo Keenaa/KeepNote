@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import FacebookShare
+import Social
 
 class SingleNoteViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
 
@@ -18,6 +18,7 @@ class SingleNoteViewController: UIViewController, UITextFieldDelegate, UIPickerV
     @IBOutlet weak var noteText: UITextView!
     @IBOutlet weak var colorPicker: UIPickerView!
     
+    @IBOutlet var shareButton: UIBarButtonItem!
     var colors: [String] = []
     var currentColorChoice:UIColor?
     override func viewDidLoad() {
@@ -29,11 +30,12 @@ class SingleNoteViewController: UIViewController, UITextFieldDelegate, UIPickerV
         
         colors = ["Yellow", "Red", "Blue", "Green"]
         if NoteManager.sharedInstance.currentNote != nil {
+            shareButton.isEnabled = true
             noteTitle.title = NoteManager.sharedInstance.currentNote?.title
             editTitle.text = NoteManager.sharedInstance.currentNote?.title
             noteText.text = NoteManager.sharedInstance.currentNote?.content
         }else{
-            
+            shareButton.isEnabled = false
             noteTitle.title = "Add New"
             noteText.text = ""
         }
@@ -86,12 +88,16 @@ class SingleNoteViewController: UIViewController, UITextFieldDelegate, UIPickerV
     }
     
     @IBAction func options(_ sender: Any) {
-        //let shareDialog = MessageDialog(content: myContent)
-        //shareDialog.completion = { result in
-            // Handle share results
-        //}
+        if SLComposeViewController.isAvailable(forServiceType: SLServiceTypeFacebook){
+           let facebookSheet:SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeFacebook)
+            facebookSheet.setInitialText("Share on Facebook teszeitazoitbhz")
+            self.present(facebookSheet, animated: true, completion: nil)
+        } else {
+            let alert = UIAlertController(title: "Accounts", message: "Please login to a Facebook account to share.", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
         
-        //try shareDialog.show()
     }
     
     // The number of columns of data

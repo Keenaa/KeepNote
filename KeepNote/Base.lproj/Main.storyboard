@@ -189,6 +189,7 @@
                         <outlet property="editTitle" destination="8JT-AI-gCK" id="lEC-42-lBB"/>
                         <outlet property="noteText" destination="cce-FQ-H4Z" id="ken-g3-QEo"/>
                         <outlet property="noteTitle" destination="SXJ-a6-fWI" id="bvM-Pw-l8A"/>
+                        <outlet property="shareButton" destination="QEI-Jl-HZZ" id="U0Y-jf-7bK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OEY-J0-Nl9" userLabel="First Responder" sceneMemberID="firstResponder"/>
