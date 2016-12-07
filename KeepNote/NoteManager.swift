@@ -28,7 +28,7 @@ public class NoteManager {
             note.created_at = Date() as NSDate?
             do {
                 try context.save()
-            } catch {
+            } catch let error as NSError{
                 print("failure : \(error)")
                 return nil
             }

@@ -22,15 +22,8 @@ class HomepageViewController: UIViewController, UICollectionViewDelegate, UIColl
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        /*
-         
-        let colour = UIColor.red
-        let rgbColour = colour.cgColor
         
-        let color = UIColor(cgColor: rgbColour)
-        */
-        
+    
         // Do any additional setup after loading the view.
     }
     
@@ -78,5 +71,14 @@ class HomepageViewController: UIViewController, UICollectionViewDelegate, UIColl
     
             return CGSize(width: collectionView.bounds.size.width, height: 300)
     }
+    
+    // Moving ITEM
+    func collectionView(_ collectionView: UICollectionView, moveItemAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        let tmp = NoteManager.sharedInstance.noteList[destinationIndexPath.row]
+        
+            // Move data
+    }
+    
+
 
 }

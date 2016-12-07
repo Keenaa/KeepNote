@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FacebookShare
 
 class SingleNoteViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
 
@@ -18,7 +19,7 @@ class SingleNoteViewController: UIViewController, UITextFieldDelegate, UIPickerV
     @IBOutlet weak var colorPicker: UIPickerView!
     
     var colors: [String] = []
-    
+    var currentColorChoice:UIColor?
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -48,6 +49,7 @@ class SingleNoteViewController: UIViewController, UITextFieldDelegate, UIPickerV
         if NoteManager.sharedInstance.currentNote != nil {
         NoteManager.sharedInstance.currentNote?.content = noteText.text
         NoteManager.sharedInstance.currentNote?.title = editTitle.text
+        NoteManager.sharedInstance.currentNote?.color = currentColorChoice
         NoteManager.sharedInstance.updateNote { (error:String?) in
             if error != nil {
                 self.dismiss(animated: true, completion: { 
@@ -56,7 +58,7 @@ class SingleNoteViewController: UIViewController, UITextFieldDelegate, UIPickerV
             }
         }
         }else{
-             NoteManager.sharedInstance.createNote(title: editTitle.text!, content: noteText.text, position: 0, color: NoteManager.sharedInstance.currentNote?.color as! UIColor)
+             _ = NoteManager.sharedInstance.createNote(title: editTitle.text!, content: noteText.text, position: 0, color: currentColorChoice!)
             self.dismiss(animated: true, completion: {
                 
             })
@@ -83,7 +85,12 @@ class SingleNoteViewController: UIViewController, UITextFieldDelegate, UIPickerV
     }
     
     @IBAction func options(_ sender: Any) {
+        let shareDialog = MessageDialog(content: myContent)
+        shareDialog.completion = { result in
+            // Handle share results
+        }
         
+        try shareDialog.show()
     }
     
     // The number of columns of data
@@ -104,20 +111,18 @@ class SingleNoteViewController: UIViewController, UITextFieldDelegate, UIPickerV
     }
     //Catch the selected option
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        var currentColor: UIColor
         switch colors[row] {
         case "Yellow":
-            currentColor = UIColor.yellow
+            currentColorChoice = UIColor.yellow
         case "Red":
-            currentColor = UIColor.red
+            currentColorChoice = UIColor.red
         case "Green":
-            currentColor = UIColor.green
+            currentColorChoice = UIColor.green
         case "Blue":
-            currentColor = UIColor.blue
+            currentColorChoice = UIColor.blue
         default:
-            currentColor = UIColor.yellow
+            currentColorChoice = UIColor.yellow
         }
-        NoteManager.sharedInstance.currentNote?.color = currentColor
     }
 
 }
